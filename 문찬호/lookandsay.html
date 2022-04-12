@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <span>개미수열 입력</span>
+    <input type="text" id="lookandsay">
+    <button id="output">개미수열 출력</button>
+<script>
+    let output = document.getElementById('output')
+    output.onclick = function() {
+            let nums = document.querySelector('#lookandsay').value
+            nums = Number(nums)  //숫자로 변환
+            document.write(lookAndSay(nums));
+    }
+    function lookAndSay(n)
+    {
+        if (n == 1)    
+            return "1";
+
+        let str = "11";
+        if (n == 2)    
+            return str;
+       
+
+         
+        for (let i = 3; i <= n; i++)
+        {
+            str += '$';
+            let len = str.length;
+             
+            let cnt = 1;
+             
+            let tmp = "";
+            let arr = str.split("");
+
+            for(let j = 1; j < len; j++)
+            {
+                 
+                if (arr[j] != arr[j - 1])
+                {
+                     
+                    tmp += cnt + 0;
+                    tmp += arr[j - 1];
+                    cnt = 1;
+                }
+                else 
+                    cnt++;
+            }
+            str = tmp;
+        }
+        return str;
+    }
+     
+    document.write(lookAndSay(n));
+
+    </script>
+</body>
+</html>
